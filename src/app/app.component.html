@@ -5,10 +5,7 @@
             <h1>Number Facts</h1>
             <span class="example-spacer"></span>
             <mat-icon class="example-icon" (click)=addNumber()>playlist_add</mat-icon>
-
-
             <mat-icon class="example-icon">notifications</mat-icon>
-
             <mat-icon matBadge="{{this.hidden.length}}" [matMenuTriggerFor]="menu" matBadgeSize="large" matBadgeColor="warn" class="example-icon">delete</mat-icon>
             <mat-menu #menu="matMenu">
                 <button *ngFor="let hiddenFacts of hidden" mat-menu-item>{{hiddenFacts}}</button>
@@ -16,6 +13,7 @@
             </mat-menu>
         </mat-toolbar-row>
     </mat-toolbar>
+    <h3 *ngIf="updatesAvailable">(Updates Availale - Refresh)</h3>
     <section>
         <div class="container">
             <app-numbers *ngFor="let num of numbers" num={{num}} (hide)=hide(num)></app-numbers>

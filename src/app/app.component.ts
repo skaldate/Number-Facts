@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SwUpdate } from "@angular/service-worker";
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,14 @@ export class AppComponent {
   numbers=[1,2];
   title = 'pwa-demo-angular-rva';
   hidden = [];
+  updatesAvailable:boolean = false;
+
+  constructor(swUpdate:SwUpdate){
+    swUpdate.available.subscribe(event => { 
+        this.updatesAvailable = true;
+        //swUpdate.activateUpdate().then(() => document.location.reload()); 
+    });
+  }
 
   addNumber(){
     let number = Math.floor((Math.random() * 100) + 1);
