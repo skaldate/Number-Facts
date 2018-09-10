@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { SwUpdate } from "@angular/service-worker";
+import { interval } from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -13,9 +14,10 @@ export class AppComponent {
   updatesAvailable:boolean = false;
 
   constructor(swUpdate:SwUpdate){
+    interval(6 * 60 * 60).subscribe(() => swUpdate.checkForUpdate()); 
     swUpdate.available.subscribe(event => { 
         this.updatesAvailable = true;
-        //swUpdate.activateUpdate().then(() => document.location.reload()); 
+        swUpdate.activateUpdate().then(() => document.location.reload()); 
     });
   }
 
