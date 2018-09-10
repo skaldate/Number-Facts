@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { NumbersService } from "src/app/services/numbers.service";
 import { NumbersComponent } from "src/app/numbers/numbers.component";
 import { HttpClientModule } from "@angular/common/http";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { HttpClientModule } from "@angular/common/http";
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [NumbersService],
   bootstrap: [AppComponent]

@@ -10,7 +10,7 @@ import { Input, Output, EventEmitter } from "@angular/core";
 export class NumbersComponent implements OnInit {
 
   mathFact:string;
-  numberFact:string;
+  numberFact:string="";
 
   @Input()
   num:number;

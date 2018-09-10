@@ -1,10 +1,12 @@
-<mat-card class="example-card" class='even'>
-    <mat-card-content>
-        <p class="card">
-            {{numberFact}}
-        </p>
-    </mat-card-content>
-    <mat-card-actions>
-        <button mat-button (click)="hideClick()">HIDE</button>
-    </mat-card-actions>
-</mat-card>
+<div *ngIf="numberFact !=''">
+    <mat-card class="example-card" class='even'>
+        <mat-card-content>
+            <p class="card">
+                {{numberFact}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button (click)="hideClick()">HIDE</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
