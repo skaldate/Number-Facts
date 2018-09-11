@@ -9,6 +9,7 @@ import { NumbersComponent } from "src/app/numbers/numbers.component";
 import { HttpClientModule } from "@angular/common/http";
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SubscriptionService } from "src/app/services/subscription.service";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { environment } from '../environments/environment';
     MaterialModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [NumbersService],
+  providers: [NumbersService, SubscriptionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
