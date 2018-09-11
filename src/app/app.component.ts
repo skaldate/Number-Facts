@@ -32,7 +32,7 @@ export class AppComponent {
       })
     .then(sub => {
       console.log(sub);
-     // this.subscription.addPushSubscriber(sub).subscribe()
+      this.subscription.addPushSubscriber(sub).subscribe()
     })
     .catch(err => console.error("Could not subscribe to notifications", err));
   }
