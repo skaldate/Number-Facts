@@ -13,13 +13,19 @@ export class AppComponent {
   hidden = [];
   updatesAvailable:boolean = false;
 
-  constructor(swUpdate:SwUpdate){
-    interval(6 * 60 * 60).subscribe(() => swUpdate.checkForUpdate()); 
+  constructor(private swUpdate:SwUpdate){
+    
     swUpdate.available.subscribe(event => { 
         this.updatesAvailable = true;
         swUpdate.activateUpdate().then(() => document.location.reload()); 
     });
+      //swUpdate.checkForUpdate();
+      
   }
+    ngAfterViewInit(){
+      interval(60*60*6).subscribe(()=> this.swUpdate.checkForUpdate());
+    }
+  
 
   addNumber(){
     let number = Math.floor((Math.random() * 100) + 1);
