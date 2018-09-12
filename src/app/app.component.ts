@@ -22,7 +22,8 @@ export class AppComponent {
   }
 
   addNumber(){
-    let number = Math.floor((Math.random() * 100) + 1);
+    //let number = Math.floor((Math.random() * 100) + 1);
+    let number = this.numbers.length+1;
     this.numbers.push(number);
   }
   hide(event:number){
