@@ -17,12 +17,15 @@ export class AppComponent {
   readonly VAPID_PUBLIC_KEY = "BBdxhfNveHLT5giRLdIJw0Vo8U_jqnkx3l8YUDafySyD4OyVgQuKBlxHxRgStqKSqcIvenO8GJaVNWQq3EhkfwE";
 
 
-  constructor(swUpdate:SwUpdate, private swPush: SwPush, private subscription: SubscriptionService){
-    interval(6 * 60 * 60).subscribe(() => swUpdate.checkForUpdate()); 
+  constructor(private swUpdate:SwUpdate, private swPush: SwPush, private subscription: SubscriptionService){
     swUpdate.available.subscribe(event => { 
         this.updatesAvailable = true;
         swUpdate.activateUpdate().then(() => document.location.reload()); 
     });
+  }
+  
+  ngAfterViewInit(){
+      interval(60*60*6).subscribe(()=> this.swUpdate.checkForUpdate());
   }
 
   subscribeToNotifications() {
